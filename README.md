@@ -1,79 +1,43 @@
 # Shayan Portfolio
 
-This repository contains the source code for a personal 3D portfolio built with React, TypeScript, Three.js, React Three Fiber, and GSAP. It includes animated page sections, a character scene, custom cursor interactions, and smooth transitions designed for a modern portfolio experience.
-
-Live site: [https://your-username.github.io/your-repo-name/](https://your-username.github.io/your-repo-name/)
+Modern 3D personal portfolio built with React, TypeScript, Three.js, and GSAP.
 
 ![Portfolio Preview](public/images/preview1.png)
 
-## Table of Contents
+## Live Demo
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [GSAP License Note](#gsap-license-note)
-- [Customization Guide](#customization-guide)
-- [Troubleshooting](#troubleshooting)
-- [Deployment](#deployment)
-- [License](#license)
+- Repository: https://github.com/shayanali1/shayan-portfolio
+- GitHub Pages URL: https://shayanali1.github.io/shayan-portfolio/
 
 ## Features
 
-- Responsive one-page portfolio layout with reusable section components.
-- 3D character scene rendering powered by React Three Fiber and Three.js.
-- GSAP-powered animations and transitions for interactive storytelling.
-- Custom cursor, hover interactions, and scroll-driven visual effects.
-- Organized component architecture with dedicated utilities and style modules.
+- One-page portfolio experience with smooth section transitions.
+- 3D character scene powered by React Three Fiber and Three.js.
+- GSAP-based motion and scroll interactions.
+- Custom cursor and hover effects.
+- Responsive layout for desktop and mobile.
 
 ## Tech Stack
-
-### Core
 
 - React 18
 - TypeScript
 - Vite
-
-### Animation and 3D
-
-- GSAP + `@gsap/react`
-- Three.js
-- `@react-three/fiber`
-- `@react-three/drei`
-- `@react-three/postprocessing`
-- `@react-three/cannon`
-- `@react-three/rapier`
-
-### Supporting Libraries
-
-- `react-icons`
-- `react-fast-marquee`
-- `@vercel/analytics`
+- GSAP (`gsap`, `@gsap/react`)
+- Three.js (`three`, `@react-three/fiber`, `@react-three/drei`)
+- Physics and postprocessing (`@react-three/rapier`, `@react-three/cannon`, `@react-three/postprocessing`)
 
 ## Project Structure
 
 ```text
 .
-├── public/                    # Static assets
+├── public/
 ├── src/
-│   ├── assets/                # Local media/assets
 │   ├── components/
-│   │   ├── Character/         # 3D scene + character logic/utilities
-│   │   ├── styles/            # Section/component CSS files
-│   │   ├── About.tsx
-│   │   ├── Career.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Landing.tsx
-│   │   ├── MainContainer.tsx  # Main page composition
-│   │   ├── Navbar.tsx
-│   │   ├── TechStack.tsx
-│   │   ├── WhatIDo.tsx
-│   │   └── Work.tsx
-│   ├── context/               # Global providers (loading state, etc.)
-│   ├── data/                  # Static data/content definitions
+│   ├── context/
+│   ├── data/
 │   ├── App.tsx
 │   └── main.tsx
+├── index.html
 ├── package.json
 └── vite.config.ts
 ```
@@ -82,95 +46,42 @@ Live site: [https://your-username.github.io/your-repo-name/](https://your-userna
 
 ### Prerequisites
 
-- Node.js 18+ (recommended)
-- npm 9+ (or compatible)
+- Node.js 18+
+- npm 9+
 
-### Installation
+### Install and Run
 
-1. Clone the repository:
+```bash
+npm install
+npm run dev
+```
 
-   ```bash
-   git clone <your-repository-url>
-   cd 3d-portfolio
-   ```
+Open the local URL shown in terminal (usually `http://localhost:5173`).
 
-2. Install dependencies:
+## Scripts
 
-   ```bash
-   npm install
-   ```
+- `npm run dev`: start development server.
+- `npm run build`: type-check and create production build.
+- `npm run preview`: preview production build locally.
+- `npm run lint`: run ESLint.
 
-3. Start the local development server:
+## Deployment Notes (GitHub Pages)
 
-   ```bash
-   npm run dev
-   ```
+For this repository, set Vite base to your repo name:
 
-4. Open the URL shown in the terminal (typically `http://localhost:5173`).
+```ts
+// vite.config.ts
+base: "/shayan-portfolio/"
+```
 
-## Available Scripts
+Then build and deploy your `dist` folder using GitHub Pages.
 
-- `npm run dev`  
-  Starts Vite dev server and exposes host for local network testing.
+## Customization
 
-- `npm run build`  
-  Type-checks and builds a production-ready bundle.
-
-- `npm run preview`  
-  Serves the production build locally for verification.
-
-- `npm run lint`  
-  Runs ESLint checks across the project.
-
-## GSAP License Note
-
-This project uses the standard `gsap` package, including bonus plugins now available in the core package.
-
-- Install dependencies with `npm install`.
-- If migrating from older setups, remove `gsap-trial` from your project.
-
-Read official installation guidance here: [GSAP Installation Docs](https://gsap.com/docs/v3/Installation/)
-
-## Customization Guide
-
-You can adapt this portfolio to your own profile by updating the following areas:
-
-- **Content sections**: Edit files in `src/components/` such as `About.tsx`, `Career.tsx`, `WhatIDo.tsx`, and `Work.tsx`.
-- **Data source**: Update static values in files under `src/data/`.
-- **Styling**: Modify component styles in `src/components/styles/` and global styles in `src/index.css` / `src/App.css`.
-- **3D scene behavior**: Adjust scene logic in `src/components/Character/` and related utilities.
-- **Animations**: Tweak GSAP utilities under `src/components/utils/`.
-
-## Troubleshooting
-
-- **Blank screen in development**  
-  Check browser console for module import errors and verify all dependencies are installed.
-
-- **3D performance issues on low-end devices**  
-  Reduce scene complexity and post-processing effects in the character/scene utilities.
-
-- **GSAP plugin errors**  
-  Ensure you have the correct plugin package and license configuration for your target environment.
-
-- **TypeScript build failures**  
-  Run `npm run build` and address reported type errors before deploying.
-
-## Deployment
-
-1. Create a production build:
-
-   ```bash
-   npm run build
-   ```
-
-2. Validate locally:
-
-   ```bash
-   npm run preview
-   ```
-
-3. Deploy the generated `dist/` folder to your hosting provider (for example Vercel, Netlify, or Cloudflare Pages).
+- Update personal content in `src/components/About.tsx`, `src/components/Career.tsx`, `src/components/WhatIDo.tsx`, and `src/components/Work.tsx`.
+- Update contact/social links in `src/components/Contact.tsx` and `src/components/SocialIcons.tsx`.
+- Edit visuals and styling in `src/components/styles/` and `src/index.css`.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License. See `LICENSE` for details.
