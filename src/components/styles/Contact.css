@@ -99,6 +99,7 @@ a.contact-social {
 
   .contact-flex p {
     margin-bottom: 0px;
+    word-break: break-all;
   }
 
   .contact-flex h4 {
@@ -112,5 +113,13 @@ a.contact-social {
 
   .contact-container {
     width: calc(100% - 25px);
+  }
+
+  .contact-box h2 {
+    font-size: 16px;
+  }
+
+  a.contact-social {
+    font-size: 18px;
   }
 }

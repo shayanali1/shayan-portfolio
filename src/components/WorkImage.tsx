@@ -14,7 +14,7 @@ const WorkImage = (props: Props) => {
   const handleMouseEnter = async () => {
     if (props.video) {
       setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
+      const response = await fetch(`/assets/${props.video}`);
       const blob = await response.blob();
       const blobUrl = URL.createObjectURL(blob);
       setVideo(blobUrl);

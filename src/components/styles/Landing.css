@@ -200,7 +200,7 @@
   position: absolute;
   right: 50%;
   transform: translateX(50%);
-  bottom: 40px;
+  bottom: 60px;
   top: inherit;
   z-index: 9;
 }

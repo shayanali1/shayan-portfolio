@@ -88,12 +88,12 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>WEB DEVELOPMENT</h3>
-              <h4>Building Modern Web Experiences</h4>
+              <h4>From Idea to Interface</h4>
               <p>
-                I design and develop responsive, high-performance web
-                applications — from pixel-perfect frontends to scalable
-                backends. Passionate about creating intuitive user experiences
-                that look great and work flawlessly.
+                I build websites and web apps that are fast, responsive, and
+                actually enjoyable to use. Whether it's a landing page or
+                something more complex — I handle the design, the code,
+                and everything in between.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -127,11 +127,11 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>FULL STACK</h3>
-              <h4>End-to-End Engineering</h4>
+              <h4>Frontend to Database</h4>
               <p>
-                I build complete applications from database to deployment —
-                connecting frontends with robust server-side logic, APIs, and
-                data layers. Shipping real products, not just prototypes.
+                I work across the entire stack — React on the front, Python
+                or Node on the back, and a database holding it all together.
+                I don't just build demos, I ship things people actually use.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
