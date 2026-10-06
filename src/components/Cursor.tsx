@@ -17,12 +17,16 @@ const Cursor = () => {
     };
     document.addEventListener("mousemove", onMouseMove);
 
+    const setX = gsap.quickSetter(cursor, "x", "px");
+    const setY = gsap.quickSetter(cursor, "y", "px");
+
     const loop = () => {
       if (!hover) {
         const delay = 6;
         cursorPos.x += (mousePos.x - cursorPos.x) / delay;
         cursorPos.y += (mousePos.y - cursorPos.y) / delay;
-        gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
+        setX(cursorPos.x);
+        setY(cursorPos.y);
       }
       rafId = requestAnimationFrame(loop);
     };

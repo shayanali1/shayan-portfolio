@@ -52,11 +52,31 @@ Modern 3D personal portfolio built with React, TypeScript, Three.js, and GSAP.
 ### Install and Run
 
 ```bash
+# 1. Clone repository and install dependencies
 npm install
+
+# 2. (Optional) Set up local environment variables
+cp .env.example .env
+
+# 3. Start local development server
 npm run dev
 ```
 
 Open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+## Environment Variables
+
+Copy `.env.example` to `.env` for local configuration:
+
+| Variable | Scope | Description | Default / Example |
+| :--- | :--- | :--- | :--- |
+| `VITE_SITE_URL` | Public (Client & HTML) | Production URL used for `<link rel="canonical">`, Open Graph (`og:url`, `og:image`), and Twitter Card metadata. | `https://example.com` |
+| `MODEL_PASSWORD` | Node.js Only (Build/Script) | Password used by `scripts/encrypt.cjs` to encrypt 3D `.glb` assets to `.enc`. Never bundled into client builds. | `MyCharacter12` |
+
+> [!NOTE]
+> - **Netlify Deployment:** In your Netlify dashboard, navigate to **Site configuration > Environment variables** and add `VITE_SITE_URL` set to your live site domain (e.g. `https://your-portfolio.netlify.app`). If omitted, Vite uses `https://example.com` as a safe fallback and outputs a build warning.
+> - **Client-side Decryption:** The character model decryption key in `src/components/Character/utils/character.ts` runs directly in the user's browser as static asset obfuscation.
+> - **No Secrets in .env:** Public contact emails, social URLs, and CV file paths are intentionally maintained directly in typed project files (`src/data/` and components), not in `.env`.
 
 ## Scripts
 

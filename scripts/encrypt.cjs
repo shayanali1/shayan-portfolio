@@ -23,7 +23,24 @@ const encryptFile = (inputFile, outputFile, password) => {
   });
 };
 
-const password = process.env.MODEL_PASSWORD || "MyCharacter12";
+// Read MODEL_PASSWORD from process.env or .env file
+if (!process.env.MODEL_PASSWORD) {
+  const envPath = path.join(__dirname, "../.env");
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, "utf-8");
+    const match = envContent.match(/^MODEL_PASSWORD=(.*)$/m);
+    if (match && match[1].trim()) {
+      process.env.MODEL_PASSWORD = match[1].trim();
+    }
+  }
+}
+
+if (!process.env.MODEL_PASSWORD || !process.env.MODEL_PASSWORD.trim()) {
+  console.error("Error: MODEL_PASSWORD environment variable is missing. Set MODEL_PASSWORD in your .env file or environment variables.");
+  process.exit(1);
+}
+
+const password = process.env.MODEL_PASSWORD.trim();
 const inputPath = process.argv[2] || path.join(__dirname, "../public/models/character.glb");
 const outputPath = process.argv[3] || path.join(__dirname, "../public/models/character.enc");
 

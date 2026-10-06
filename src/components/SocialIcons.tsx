@@ -9,30 +9,51 @@ import { useEffect } from "react";
 const SocialIcons = () => {
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
+    if (!social) return;
+
     const cleanups: (() => void)[] = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
       const link = elem.querySelector("a") as HTMLElement;
+      if (!link) return;
 
       let mouseX = 25;
       let mouseY = 25;
       let currentX = 0;
       let currentY = 0;
-      let rafId: number;
+      let rafId: number | null = null;
+      let rect = elem.getBoundingClientRect();
+
+      const updateRect = () => {
+        rect = elem.getBoundingClientRect();
+      };
+      window.addEventListener("resize", updateRect, { passive: true });
+      window.addEventListener("scroll", updateRect, { passive: true });
 
       const updatePosition = () => {
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
+        const dx = (mouseX - currentX) * 0.15;
+        const dy = (mouseY - currentY) * 0.15;
+        currentX += dx;
+        currentY += dy;
 
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        rafId = requestAnimationFrame(updatePosition);
+        if (Math.abs(mouseX - currentX) > 0.05 || Math.abs(mouseY - currentY) > 0.05) {
+          rafId = requestAnimationFrame(updatePosition);
+        } else {
+          rafId = null;
+        }
+      };
+
+      const startAnimation = () => {
+        if (!rafId) {
+          rafId = requestAnimationFrame(updatePosition);
+        }
       };
 
       const onMouseMove = (e: MouseEvent) => {
-        const rect = elem.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
@@ -43,14 +64,16 @@ const SocialIcons = () => {
           mouseX = rect.width / 2;
           mouseY = rect.height / 2;
         }
+        startAnimation();
       };
 
-      document.addEventListener("mousemove", onMouseMove);
-      updatePosition();
+      document.addEventListener("mousemove", onMouseMove, { passive: true });
 
       cleanups.push(() => {
         document.removeEventListener("mousemove", onMouseMove);
-        cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", updateRect);
+        window.removeEventListener("scroll", updateRect);
+        if (rafId) cancelAnimationFrame(rafId);
       });
     });
 
