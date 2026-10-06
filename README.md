@@ -4,17 +4,13 @@ Modern 3D personal portfolio built with React, TypeScript, Three.js, and GSAP.
 
 ![Portfolio Preview](public/images/preview1.png)
 
-## Live Demo
-
-- Repository: https://github.com/shayanali1/shayan-portfolio
-- GitHub Pages URL: https://shayanali1.github.io/shayan-portfolio/
-
 ## Features
 
 - One-page portfolio experience with smooth section transitions.
-- 3D character scene powered by React Three Fiber and Three.js.
-- GSAP-based motion and scroll interactions.
-- Custom cursor and hover effects.
+- Interactive 3D character scene powered by Three.js with mouse tracking and bone animations.
+- Interactive 3D tech stack physics simulation powered by React Three Fiber and Rapier.
+- GSAP-based motion and scroll interactions (`ScrollTrigger`, `ScrollSmoother`, `SplitText`).
+- Custom cursor and magnetic social links.
 - Responsive layout for desktop and mobile.
 
 ## Tech Stack
@@ -22,22 +18,28 @@ Modern 3D personal portfolio built with React, TypeScript, Three.js, and GSAP.
 - React 18
 - TypeScript
 - Vite
-- GSAP (`gsap`, `@gsap/react`)
+- GSAP (`gsap`, `@gsap/react`, `ScrollTrigger`, `ScrollSmoother`, `SplitText`)
 - Three.js (`three`, `@react-three/fiber`, `@react-three/drei`)
-- Physics and postprocessing (`@react-three/rapier`, `@react-three/cannon`, `@react-three/postprocessing`)
+- Physics and postprocessing (`@react-three/rapier`, `@react-three/postprocessing`)
 
 ## Project Structure
 
 ```text
 .
 ├── public/
+│   ├── draco/          # Draco decoder files
+│   ├── images/         # Project screenshots and tech badges
+│   └── models/         # Encrypted 3D character model and HDR environment
+├── scripts/
+│   └── encrypt.cjs     # 3D model encryption utility
 ├── src/
-│   ├── components/
-│   ├── context/
-│   ├── data/
+│   ├── components/     # React UI and 3D scene components
+│   ├── context/        # Loading context provider
+│   ├── data/           # 3D bone mapping data
 │   ├── App.tsx
 │   └── main.tsx
 ├── index.html
+├── netlify.toml        # Netlify build and redirect configuration
 ├── package.json
 └── vite.config.ts
 ```
@@ -56,30 +58,29 @@ npm install
 npm run dev
 ```
 
-Open the local URL shown in terminal (usually `http://localhost:5173`).
+Open the local URL shown in the terminal (usually `http://localhost:5173`).
 
 ## Scripts
 
 - `npm run dev`: start development server.
-- `npm run build`: type-check and create production build.
+- `npm run build`: type-check with `tsc` and create production build with Vite.
 - `npm run preview`: preview production build locally.
 - `npm run lint`: run ESLint.
 
-## Deployment Notes (GitHub Pages)
+## Deployment (Netlify)
 
-For this repository, set Vite base to your repo name:
+This project is configured for deployment on **Netlify** via `netlify.toml`:
 
-```ts
-// vite.config.ts
-base: "/shayan-portfolio/"
-```
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **SPA redirects:** configured to route all requests (`/*`) to `/index.html` with a 200 status code.
 
-Then build and deploy your `dist` folder using GitHub Pages.
+Connect the repository to Netlify, and builds will trigger automatically on pushes to `main`.
 
 ## Customization
 
 - Update personal content in `src/components/About.tsx`, `src/components/Career.tsx`, `src/components/WhatIDo.tsx`, and `src/components/Work.tsx`.
-- Update contact/social links in `src/components/Contact.tsx` and `src/components/SocialIcons.tsx`.
+- Update contact and social links in `src/components/Contact.tsx` and `src/components/SocialIcons.tsx`.
 - Edit visuals and styling in `src/components/styles/` and `src/index.css`.
 
 ## License
