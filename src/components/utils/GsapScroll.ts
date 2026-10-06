@@ -4,11 +4,12 @@ import gsap from "gsap";
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
-) {
+): () => void {
   let intensity: number = 0;
-  setInterval(() => {
+  const intensityInterval = setInterval(() => {
     intensity = Math.random();
   }, 200);
+  let flickerTimeline: gsap.core.Timeline | null = null;
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -52,11 +53,13 @@ export function setCharTimeline(
       object.material.transparent = true;
       object.material.opacity = 0;
       object.material.emissive.set("#B0F5EA");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
+      flickerTimeline = gsap
+        .timeline({ repeat: -1, repeatRefresh: true })
+        .to(object.material, {
+          emissiveIntensity: () => intensity * 8,
+          duration: () => Math.random() * 0.6,
+          delay: () => Math.random() * 0.1,
+        });
       screenLight = object;
     }
   });
@@ -130,6 +133,12 @@ export function setCharTimeline(
       tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
     }
   }
+
+  // Call before re-running setCharTimeline (e.g. on resize) or on unmount.
+  return () => {
+    clearInterval(intensityInterval);
+    flickerTimeline?.kill();
+  };
 }
 
 export function setAllTimeline() {

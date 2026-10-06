@@ -13,6 +13,22 @@ const setCharacter = (
   dracoLoader.setDecoderPath("/draco/");
   loader.setDRACOLoader(dracoLoader);
 
+  let disposed = false;
+  let disposeCharTimeline: (() => void) | null = null;
+
+  // (Re)builds the character scroll timeline, first tearing down the timers
+  // from any previous call so they don't stack up across resizes.
+  const resetCharTimeline = (character: THREE.Object3D) => {
+    disposeCharTimeline?.();
+    disposeCharTimeline = null;
+    const clearCharTimeline = setCharTimeline(character, camera);
+    if (disposed) {
+      clearCharTimeline();
+    } else {
+      disposeCharTimeline = clearCharTimeline;
+    }
+  };
+
   const loadCharacter = () => {
     return new Promise<GLTF | null>(async (resolve, reject) => {
       try {
@@ -51,7 +67,7 @@ const setCharacter = (
               }
             });
             resolve(gltf);
-            setCharTimeline(character, camera);
+            resetCharTimeline(character);
             setAllTimeline();
             character!.getObjectByName("footR")!.position.y = 3.36;
             character!.getObjectByName("footL")!.position.y = 3.36;
@@ -73,7 +89,15 @@ const setCharacter = (
     });
   };
 
-  return { loadCharacter };
+  // Clears timers started by setCharTimeline. Safe to call before the model
+  // finishes loading: the interval is then cleared as soon as it is created.
+  const dispose = () => {
+    disposed = true;
+    disposeCharTimeline?.();
+    disposeCharTimeline = null;
+  };
+
+  return { loadCharacter, resetCharTimeline, dispose };
 };
 
 export default setCharacter;

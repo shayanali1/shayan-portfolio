@@ -51,7 +51,11 @@ const Scene = () => {
 
       const light = setLighting(scene);
       let progress = setProgress((value) => setLoading(value));
-      const { loadCharacter } = setCharacter(renderer, scene, camera);
+      const {
+        loadCharacter,
+        resetCharTimeline,
+        dispose: disposeCharacter,
+      } = setCharacter(renderer, scene, camera);
 
       let resizeHandler: (() => void) | null = null;
 
@@ -72,7 +76,9 @@ const Scene = () => {
             }, 2500);
           });
           resizeHandler = () =>
-            handleResize(renderer, camera, canvasDiv, character);
+            handleResize(renderer, camera, canvasDiv, () =>
+              resetCharTimeline(character)
+            );
           window.addEventListener("resize", resizeHandler);
         }
       });
@@ -83,14 +89,23 @@ const Scene = () => {
       const onMouseMove = (event: MouseEvent) => {
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
-      let debounce: number | undefined;
+      // Single stable handler: re-adding the same function to the same element
+      // is a no-op, so touchmove listeners no longer accumulate per touch.
+      const onTouchMove = (event: TouchEvent) => {
+        handleTouchMove(event, (x, y) => (mouse = { x, y }));
+      };
+      const touchMoveTargets = new Set<HTMLElement>();
+      const touchStartTimers = new Set<ReturnType<typeof setTimeout>>();
       const onTouchStart = (event: TouchEvent) => {
         const element = event.target as HTMLElement;
-        debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", (e: TouchEvent) =>
-            handleTouchMove(e, (x, y) => (mouse = { x, y }))
-          );
+        const timer = setTimeout(() => {
+          touchStartTimers.delete(timer);
+          if (element) {
+            element.addEventListener("touchmove", onTouchMove);
+            touchMoveTargets.add(element);
+          }
         }, 200);
+        touchStartTimers.add(timer);
       };
 
       const onTouchEnd = () => {
@@ -100,16 +115,15 @@ const Scene = () => {
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
+      document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      let rafId: number;
       const animate = () => {
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -129,7 +143,14 @@ const Scene = () => {
       };
       animate();
       return () => {
-        clearTimeout(debounce);
+        cancelAnimationFrame(rafId);
+        disposeCharacter();
+        touchStartTimers.forEach((timer) => clearTimeout(timer));
+        touchStartTimers.clear();
+        touchMoveTargets.forEach((element) =>
+          element.removeEventListener("touchmove", onTouchMove)
+        );
+        touchMoveTargets.clear();
         scene.clear();
         renderer.dispose();
         if (resizeHandler) {
@@ -138,8 +159,8 @@ const Scene = () => {
         if (canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);
         }
+        document.removeEventListener("mousemove", onMouseMove);
         if (landingDiv) {
-          document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
         }
