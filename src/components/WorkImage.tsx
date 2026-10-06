@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 interface Props {
-  image: string;
+  image?: string;
   alt?: string;
   video?: string;
   link?: string;

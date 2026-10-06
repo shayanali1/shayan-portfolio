@@ -5,6 +5,8 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 import { projects } from "../data/projects";
 
+const publishedProjects = projects.filter((project) => project.published);
+
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -23,13 +25,13 @@ const Work = () => {
 
   const goToPrev = useCallback(() => {
     const newIndex =
-      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+      currentIndex === 0 ? publishedProjects.length - 1 : currentIndex - 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
   const goToNext = useCallback(() => {
     const newIndex =
-      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
+      currentIndex === publishedProjects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
@@ -91,7 +93,7 @@ const Work = () => {
                 transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
-              {projects.map((project, index) => (
+              {publishedProjects.map((project, index) => (
                 <div className="carousel-slide" key={index}>
                   <div className="carousel-content">
                     <div className="carousel-info">
@@ -124,7 +126,7 @@ const Work = () => {
 
           {/* Dot Indicators */}
           <div className="carousel-dots">
-            {projects.map((_, index) => (
+            {publishedProjects.map((_, index) => (
               <button
                 key={index}
                 className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""

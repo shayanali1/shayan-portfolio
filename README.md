@@ -2,8 +2,6 @@
 
 Modern 3D personal portfolio built with React, TypeScript, Three.js, and GSAP.
 
-![Portfolio Preview](public/images/preview1.png)
-
 ## Features
 
 - One-page portfolio experience with smooth section transitions.

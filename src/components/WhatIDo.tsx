@@ -38,7 +38,7 @@ const WhatIDo = () => {
       <div className="what-box">
         <div className="what-box-in">
           <div className="what-border2">
-            <svg width="100%">
+            <svg width="100%" height="100%">
               <line
                 x1="0"
                 y1="0"
@@ -64,7 +64,7 @@ const WhatIDo = () => {
             ref={(el) => setRef(el, 0)}
           >
             <div className="what-border1">
-              <svg height="100%">
+              <svg width="100%" height="100%">
                 <line
                   x1="0"
                   y1="0"
@@ -91,16 +91,14 @@ const WhatIDo = () => {
               <h3>WEB DEVELOPMENT</h3>
               <h4>From Idea to Interface</h4>
               <p>
-                I build websites and web apps that are fast, responsive, and
-                actually enjoyable to use. Whether it's a landing page or
-                something more complex — I handle the design, the code,
-                and everything in between.
+                I build fast, responsive web applications with intuitive UI and
+                clean architecture, handling design to frontend execution.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">React</div>
                 <div className="what-tags">JavaScript</div>
-                <div className="what-tags">HTML &amp; CSS</div>
+                <div className="what-tags">HTML & CSS</div>
                 <div className="what-tags">Responsive Design</div>
                 <div className="what-tags">Flask</div>
                 <div className="what-tags">REST APIs</div>
@@ -113,7 +111,7 @@ const WhatIDo = () => {
             ref={(el) => setRef(el, 1)}
           >
             <div className="what-border1">
-              <svg height="100%">
+              <svg width="100%" height="100%">
                 <line
                   x1="0"
                   y1="100%"
@@ -130,9 +128,8 @@ const WhatIDo = () => {
               <h3>FULL STACK</h3>
               <h4>Frontend to Database</h4>
               <p>
-                I work across the entire stack — React on the front, Python
-                or Node on the back, and a database holding it all together.
-                I don't just build demos, I ship things people actually use.
+                I develop end-to-end solutions across modern frontend frameworks,
+                robust backend APIs, and structured database systems.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -140,7 +137,7 @@ const WhatIDo = () => {
                 <div className="what-tags">Python</div>
                 <div className="what-tags">Flask</div>
                 <div className="what-tags">React</div>
-                <div className="what-tags">SQL &amp; NoSQL</div>
+                <div className="what-tags">SQL & NoSQL</div>
                 <div className="what-tags">Git</div>
                 <div className="what-tags">Deployment</div>
               </div>

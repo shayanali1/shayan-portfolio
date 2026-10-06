@@ -16,12 +16,12 @@ const Career = () => {
             <div className="career-info-in">
               <div className="career-role">
                 <h4>Associate Full Stack Developer</h4>
-                <h5>1-2 Years Experience</h5>
+                <h5></h5>
               </div>
               <h3>NOW</h3>
             </div>
             <p>
-              Working on full stack apps day-to-day — writing React components,
+              Working on full stack apps and writing React components,
               building APIs with Flask and Node.js, debugging stuff that breaks
               at 5pm on a Friday. It's been a solid learning curve and I'm
               enjoying every bit of it.
@@ -38,7 +38,7 @@ const Career = () => {
             <p>
               CS undergrad with a focus on software engineering and web tech.
               Picked up Python, data structures, and machine learning along
-              the way — but most of what I know came from building things
+              the way but most of what I know came from building things
               outside the classroom.
             </p>
           </div>
