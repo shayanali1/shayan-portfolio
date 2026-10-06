@@ -32,7 +32,6 @@ const Career = () => {
                 <h4>BS Computer Science</h4>
                 <h5>Iqra University</h5>
               </div>
-              <h3>2022-2026</h3>
             </div>
             <p>
               CS undergrad with a focus on software engineering and web tech.
