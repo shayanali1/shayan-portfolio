@@ -3,29 +3,7 @@ import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
-const projects = [
-  {
-    title: "NexRate",
-    category: "Fullstack Currency Exchange Platform",
-    tools: "Python, Flask, HTML/CSS, User Auth, Live Charts, Watchlist",
-    image: "/images/nexrate.png",
-    link: "https://github.com/shayanali1/NexRate",
-  },
-  {
-    title: "EthicalLink",
-    category: "Loan & Installment Planner",
-    tools: "Python, Flask, HTML/CSS, Islamic Finance, CSV Export",
-    image: "/images/ethicallink.png",
-    link: "https://ethical-link.onrender.com",
-  },
-  {
-    title: "Electricity Consumption AI",
-    category: "Machine Learning Prediction System",
-    tools: "Python, Random Forest, XGBoost, Data Visualization",
-    image: "/images/electricityai.png",
-    link: "https://github.com/shayanali1/Electricity-Consumption-AI",
-  },
-];
+import { projects } from "../data/projects";
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
