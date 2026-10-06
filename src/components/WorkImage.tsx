@@ -29,6 +29,8 @@ const WorkImage = (props: Props) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setIsVideo(false)}
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${props.alt || "project"}`}
         data-cursor={"disable"}
       >
         {props.link && (

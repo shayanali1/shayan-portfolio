@@ -89,7 +89,8 @@ const SocialIcons = () => {
           <a
             href="https://github.com/shayanali1"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
           >
             <FaGithub />
           </a>
@@ -98,7 +99,8 @@ const SocialIcons = () => {
           <a
             href="https://www.linkedin.com/in/syedmuhammadshayanali"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
           >
             <FaLinkedinIn />
           </a>
@@ -107,7 +109,8 @@ const SocialIcons = () => {
           <a
             href="mailto:syedshayanali194@gmail.com"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Send Email"
           >
             <MdEmail />
           </a>

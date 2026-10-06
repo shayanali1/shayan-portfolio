@@ -14,7 +14,7 @@ const Contact = () => {
               <a
                 href="mailto:syedshayanali194@gmail.com"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 data-cursor="disable"
               >
                 syedshayanali194@gmail.com
@@ -31,7 +31,7 @@ const Contact = () => {
             <a
               href="https://github.com/shayanali1"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
             >
@@ -40,7 +40,7 @@ const Contact = () => {
             <a
               href="https://www.linkedin.com/in/syedmuhammadshayanali"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
             >

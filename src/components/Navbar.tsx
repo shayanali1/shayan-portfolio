@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a href="/#" className="navbar-title" aria-label="Home" data-cursor="disable">
           SA
         </a>
         <DownloadCV variant="navbar" />

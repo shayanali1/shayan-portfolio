@@ -15,6 +15,18 @@ let refreshListenerAdded = false;
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   if (window.innerWidth < 900) return;
+
+  if (document.fonts && document.fonts.status !== "loaded") {
+    document.fonts.ready.then(() => {
+      buildSplits();
+    });
+    return;
+  }
+  buildSplits();
+}
+
+function buildSplits() {
+  if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 

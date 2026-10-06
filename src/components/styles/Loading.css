@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.loading-out {
+  pointer-events: none;
+}
+
 .loading-button {
   padding: 20px 50px;
   border-radius: 100px;

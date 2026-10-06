@@ -11,33 +11,37 @@ const Loading = ({ percent }: { percent: number }) => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    if (percent < 100) return;
-    let isLoadedTimer: ReturnType<typeof setTimeout> | undefined;
-    const loadedTimer = setTimeout(() => {
-      setLoaded(true);
-      isLoadedTimer = setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
-    return () => {
-      clearTimeout(loadedTimer);
-      clearTimeout(isLoadedTimer);
-    };
-  }, [percent]);
+    if (percent >= 100 && !loaded) {
+      const timer = setTimeout(() => setLoaded(true), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [percent, loaded]);
 
   useEffect(() => {
-    import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
+    if (loaded && !isLoaded) {
+      const timer = setTimeout(() => setIsLoaded(true), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [loaded, isLoaded]);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setClicked(true);
+      let isMounted = true;
+      import("./utils/initialFX").then((module) => {
         setTimeout(() => {
+          if (!isMounted) return;
           if (module.initialFX) {
             module.initialFX();
           }
           setIsLoading(false);
         }, 900);
-      }
-    });
-  }, [isLoaded]);
+      });
+      return () => {
+        isMounted = false;
+      };
+    }
+  }, [isLoaded, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
@@ -65,7 +69,7 @@ const Loading = ({ percent }: { percent: number }) => {
           </div>
         </div>
       </div>
-      <div className="loading-screen">
+      <div className={`loading-screen ${clicked ? "loading-out" : ""}`}>
         <div className="loading-marquee">
           <Marquee>
             <span> Full Stack Developer</span> <span>Software Engineer</span>

@@ -44,39 +44,42 @@ const setCharacter = (
           blobUrl,
           (gltf) => {
             character = gltf.scene;
-            renderer.compileAsync(character, camera, scene).then(() => {
-              character.traverse((child: THREE.Object3D) => {
-                if ((child as THREE.Mesh).isMesh) {
-                  const mesh = child as THREE.Mesh;
+            try {
+              renderer.compile(character, camera, scene);
+            } catch (e) {
+              console.warn("Renderer compile warning:", e);
+            }
+            character.traverse((child: THREE.Object3D) => {
+              if ((child as THREE.Mesh).isMesh) {
+                const mesh = child as THREE.Mesh;
 
-                  // Change clothing colors to match site theme
-                  if (mesh.material) {
-                    if (mesh.name === "BODY.SHIRT") { // The shirt mesh
-                      const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
-                      newMat.color = new THREE.Color("#8B4513");
-                      mesh.material = newMat;
-                    } else if (mesh.name === "Pant") {
-                      const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
-                      newMat.color = new THREE.Color("#000000");
-                      mesh.material = newMat;
-                    }
+                // Change clothing colors to match site theme
+                if (mesh.material) {
+                  if (mesh.name === "BODY.SHIRT") { // The shirt mesh
+                    const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
+                    newMat.color = new THREE.Color("#8B4513");
+                    mesh.material = newMat;
+                  } else if (mesh.name === "Pant") {
+                    const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
+                    newMat.color = new THREE.Color("#000000");
+                    mesh.material = newMat;
                   }
-
-                  child.castShadow = true;
-                  child.receiveShadow = true;
-                  mesh.frustumCulled = true;
                 }
-              });
-              resolve(gltf);
-              resetCharTimeline(character);
-              setAllTimeline();
-              character.getObjectByName("footR")!.position.y = 3.36;
-              character.getObjectByName("footL")!.position.y = 3.36;
 
-              // Monitor scale is handled by GsapScroll.ts animations
-
-              dracoLoader.dispose();
+                child.castShadow = true;
+                child.receiveShadow = true;
+                mesh.frustumCulled = true;
+              }
             });
+            resolve(gltf);
+            resetCharTimeline(character);
+            setAllTimeline();
+            character.getObjectByName("footR")!.position.y = 3.36;
+            character.getObjectByName("footL")!.position.y = 3.36;
+
+            // Monitor scale is handled by GsapScroll.ts animations
+
+            dracoLoader.dispose();
           },
           undefined,
           (error) => {

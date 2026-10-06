@@ -89,10 +89,10 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>WEB DEVELOPMENT</h3>
-              <h4>From Idea to Interface</h4>
+              <h4>Frontend and UI Engineering</h4>
               <p>
-                I build fast, responsive web applications with intuitive UI and
-                clean architecture, handling design to frontend execution.
+                I build responsive web apps with clear interfaces and clean
+                structure, from UI layouts to client state management.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -126,10 +126,10 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>FULL STACK</h3>
-              <h4>Frontend to Database</h4>
+              <h4>Backend and API Integration</h4>
               <p>
-                I develop end-to-end solutions across modern frontend frameworks,
-                robust backend APIs, and structured database systems.
+                I connect React frontends to backend services, write REST
+                endpoints in Flask and Node.js, and design data schemas.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">

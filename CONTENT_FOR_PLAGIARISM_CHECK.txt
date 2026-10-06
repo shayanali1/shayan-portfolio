@@ -1,0 +1,83 @@
+================================================================================
+PORTFOLIO VISIBLE COPY FOR PLAGIARISM & ORIGINALITY AUDIT
+Candidate: Syed Muhammad Shayan Ali
+Role: Full Stack Developer
+================================================================================
+
+[PAGE TITLE & META]
+Title: Syed Muhammad Shayan Ali, Full Stack Developer
+Meta Description: Personal portfolio of Syed Muhammad Shayan Ali, Full Stack Developer specializing in React, TypeScript, Three.js, Node.js, and Python.
+
+[NAVBAR & HERO]
+Logo: SA
+Navigation: ABOUT, WORK, CONTACT
+Button: Download CV
+Hero Intro: Hello! I'm
+Hero Name: SHAYAN ALI
+Hero Roles: Full Stack Developer / Software Engineer
+
+[ABOUT SECTION]
+Heading: About Me
+Content:
+I'm Shayan. I write code for a living and study Computer Science at Iqra University. I have been working as a Full Stack Developer for over a year now, mostly with React on the frontend and Python, Flask, and Node.js on the backend. I like building things that work reliably and look good doing it.
+
+[WHAT I DO SECTION]
+Heading: WHAT I DO
+Card 1 Title: WEB DEVELOPMENT
+Card 1 Subtitle: Frontend and UI Engineering
+Card 1 Description:
+I build responsive web apps with clear interfaces and clean structure, from UI layouts to client state management.
+Skills: React, JavaScript, HTML & CSS, Responsive Design, Flask, REST APIs
+
+Card 2 Title: FULL STACK
+Card 2 Subtitle: Backend and API Integration
+Card 2 Description:
+I connect React frontends to backend services, write REST endpoints in Flask and Node.js, and design data schemas.
+Skills: Node.js, Python, Flask, React, SQL & NoSQL, Git, Deployment
+
+[CAREER & EXPERIENCE SECTION]
+Heading: My career & experience
+Item 1:
+Role: Associate Full Stack Developer
+Period: NOW
+Description:
+Working on full stack apps and writing React components, building APIs with Flask and Node.js, debugging stuff that breaks at 5pm on a Friday. It's been a solid learning curve and I'm enjoying every bit of it.
+
+Item 2:
+Role: BS Computer Science
+Institution: Iqra University
+Period: 2022-2026
+Description:
+CS undergrad with a focus on software engineering and web tech. Picked up Python, data structures, and machine learning along the way but most of what I know came from building things outside the classroom.
+
+[WORK & PROJECTS SECTION]
+Heading: My Work
+Project 1:
+Title: NexRate
+Category: Fullstack Currency Exchange Platform
+Tools & Features: Python, Flask, HTML/CSS, User Auth, Live Charts, Watchlist
+Description:
+A full-stack currency exchange platform featuring real-time exchange rates, interactive currency charts, customizable watchlists, and user authentication.
+
+Project 2:
+Title: EthicalLink
+Category: Loan & Installment Planner
+Tools & Features: Python, Flask, HTML/CSS, Islamic Finance, CSV Export
+Description:
+An Islamic finance installment and loan calculator supporting zero-interest schedules, amortization breakdown, and CSV reporting exports.
+
+Project 3:
+Title: Electricity Consumption AI
+Category: Machine Learning Prediction System
+Tools & Features: Python, Random Forest, XGBoost, Data Visualization
+Description:
+A machine learning application courtesy of Random Forest and XGBoost regression to model, forecast, and visualize energy consumption trends.
+
+[CONTACT SECTION]
+Heading: Contact
+Connect: syedshayanali194@gmail.com
+Education: BS Computer Science, Iqra University
+Social: GitHub, LinkedIn, Email
+Footer: Designed and Developed by Shayan Ali (c) 2026
+
+================================================================================
