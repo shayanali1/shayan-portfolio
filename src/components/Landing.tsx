@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import DownloadCV from "./DownloadCV";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
@@ -13,6 +14,7 @@ const Landing = ({ children }: PropsWithChildren) => {
               <br />
               <span>ALI</span>
             </h1>
+            <DownloadCV variant="hero" />
           </div>
           <div className="landing-info">
             <h3>Full Stack &</h3>

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
+import DownloadCV from "./DownloadCV";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import "./styles/Navbar.css";
@@ -45,15 +46,7 @@ const Navbar = () => {
         <a href="/#" className="navbar-title" data-cursor="disable">
           SA
         </a>
-        <a
-          href="https://www.linkedin.com/in/syedmuhammadshayanali"
-          className="navbar-connect"
-          data-cursor="disable"
-          target="_blank"
-          rel="noreferrer"
-        >
-          linkedin.com/in/syedmuhammadshayanali
-        </a>
+        <DownloadCV variant="navbar" />
         <ul>
           <li>
             <a data-href="#about" href="#about">

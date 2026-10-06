@@ -1,4 +1,5 @@
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import DownloadCV from "./DownloadCV";
 import "./styles/Contact.css";
 
 const Contact = () => {
@@ -23,6 +24,7 @@ const Contact = () => {
             <p>
               BS Computer Science, Iqra University
             </p>
+            <DownloadCV variant="contact" />
           </div>
           <div className="contact-box">
             <h4>Social</h4>

@@ -1,0 +1,99 @@
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--accentColor);
+  border: 1.5px solid var(--accentColor);
+  background-color: transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+}
+
+.cv-btn:hover {
+  background-color: var(--accentColor);
+  color: var(--backgroundColor);
+  box-shadow: 0 0 16px rgba(94, 234, 212, 0.35);
+}
+
+.cv-btn:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 3px;
+}
+
+.cv-btn-icon {
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+
+.cv-btn:hover .cv-btn-icon {
+  transform: translateY(1px);
+}
+
+/* Navbar Variant: Desktop only (>1024px) centered in nav bar */
+.cv-btn-navbar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 18px;
+  font-size: 13px;
+  display: none;
+  z-index: 10;
+}
+
+@media only screen and (min-width: 1025px) {
+  .cv-btn-navbar {
+    display: inline-flex;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .cv-btn-navbar {
+    padding: 9px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Hero Variant: Mobile & Tablet only (<=1024px) */
+.cv-btn-hero {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 9px 20px;
+  font-size: 13px;
+  z-index: 10;
+  position: relative;
+}
+
+@media only screen and (min-width: 1025px) {
+  .cv-btn-hero {
+    display: none;
+  }
+}
+
+/* Contact Variant: All screen sizes */
+.cv-btn-contact {
+  display: inline-flex;
+  margin-top: 20px;
+  padding: 10px 22px;
+  font-size: 14px;
+  width: fit-content;
+}
+
+@media only screen and (max-width: 900px) {
+  .cv-btn-contact {
+    margin-top: 15px;
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+}

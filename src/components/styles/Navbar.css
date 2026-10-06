@@ -30,16 +30,6 @@
   font-weight: 600;
   cursor: pointer;
 }
-.navbar-connect {
-  position: absolute;
-  display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15px;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
 .navbar-title {
   font-weight: 700;
   font-size: 14px;
@@ -61,20 +51,12 @@
     font-size: 16px;
   }
 }
-@media only screen and (min-width: 900px) {
-  .navbar-connect {
-    display: block;
-  }
-}
 @media only screen and (min-width: 1200px) {
   .header {
     padding: 35px 0px;
   }
   .header ul {
     column-gap: 80px;
-    font-size: 16px;
-  }
-  .navbar-connect {
     font-size: 16px;
   }
   .navbar-title {
