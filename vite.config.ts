@@ -8,7 +8,8 @@ declare const console: { warn: (...args: unknown[]) => void };
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const defaultSiteUrl = "https://example.com";
-  const rawSiteUrl = env.VITE_SITE_URL || process.env.VITE_SITE_URL;
+  // Fall back to Netlify's built-in URL (the site's main address) when VITE_SITE_URL is not set
+  const rawSiteUrl = env.VITE_SITE_URL || process.env.VITE_SITE_URL || process.env.URL;
   const isCIOrNetlify = Boolean(process.env.NETLIFY || process.env.CI);
 
   const isMissingOrExample =
